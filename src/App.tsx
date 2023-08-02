@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/header";
+import Home from "./pages/Home";
+import Instruments from "./pages/Instruments";
+import NotFound from "./pages/404";
+import PassGen from "./pages/Instruments/PassGen";
+import FS from "./pages/Instruments/FS";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route element={<Home />} path="/" />
+        <Route element={<Instruments />} path="/i" />
+        <Route element={<PassGen />} path="/i/passgen" />
+        <Route element={<FS />} path="/i/fs" />
+        <Route element={<NotFound />} path="*" />
+      </Routes>
+    </>
   );
 }
 
