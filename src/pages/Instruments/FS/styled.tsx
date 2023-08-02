@@ -108,3 +108,7 @@ export const DirImg = styled.img`
 
   height: 25px;
 `;
+
+export const Loading = styled.div`
+  padding: 10px;
+`;

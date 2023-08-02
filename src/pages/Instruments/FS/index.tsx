@@ -8,6 +8,7 @@ import {
   DirImg,
   DirName,
   FileWindow,
+  Loading,
   Model,
   ModelName,
   PathName,
@@ -18,51 +19,63 @@ import axios from "axios";
 import config from "../../..";
 
 interface apiData {
-  dir: string;
-  file: string;
+  name: string;
+  type: 0 | 1;
 }
 
 export default function FS() {
-  const [apiData, setApiData] = useState<apiData[]>([]);
-  const [curDir, setCurDir] = useState("");
-
   const location = useLocation();
   const navigate = useNavigate();
+
+  const [apiData, setApiData] = useState<apiData[]>([]);
+  const [curDir, setCurDir] = useState(location.search.slice(5));
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState("");
 
   useEffect(() => {
     setCurDir(location.search.slice(5));
   });
 
   useEffect(() => {
+    if (loading) {
+      return;
+    }
+
+    setLoading(true);
+
     axios
-      .get(`${config.api}/FS`, {
+      .get(`${config.api}/FS2`, {
         params: {
           dir: curDir,
         },
       })
       .then((res) => {
         setApiData(res.data);
+        setLoading(false);
       })
       .catch((e) => {
-        console.log(e);
+        setLoading(false);
+        setApiError(e.response.data.error);
       });
   }, [curDir]);
 
   let Files = apiData.map((file, index) => {
-    file.dir = file.dir.replace("instruments", "i");
-
     return (
       <Dir
-        to={file.dir}
+        to={
+          file.type
+            ? config.api + curDir + "/" + file.name
+            : "?dir=" + curDir + "/" + file.name
+        }
         key={index}
-        target={file.dir.startsWith("https") ? "_blank" : ""}
+        target={file.type ? "_blank" : ""}
       >
-        {file.dir.startsWith("https") ? (
+        {file.type ? (
           <DirImg src="/svg/file.svg" />
         ) : (
           <DirImg src="/svg/folder.svg" />
         )}
-        <DirName>{file.file}</DirName>
+        <DirName>{file.name}</DirName>
       </Dir>
     );
   });
@@ -83,7 +96,11 @@ export default function FS() {
         <Button onClick={handleRoot}>Root</Button>
         <PathName>...</PathName>
         <PathUrl>{"/public" + curDir}</PathUrl>
-        <FileWindow>{Files}</FileWindow>
+        {loading ? (
+          <Loading>Loading Api Data...</Loading>
+        ) : (
+          <FileWindow>{apiError ? apiError : Files}</FileWindow>
+        )}
         <Spacer $height="2px" />
       </Model>
     </Container>
