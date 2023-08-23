@@ -37,7 +37,7 @@ export const Text = styled.div<TextI>`
   width: ${(props) => props.$width || "fit-content"};
 
   @media (max-width: 1000px) {
-    width: 95%;
+    width: 100%;
   }
 `;
 

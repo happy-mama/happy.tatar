@@ -1,5 +1,5 @@
 import { HeaderContainer } from "./styled";
-import HeaderLink from "../../assets/HeaderLink";
+import HeaderLink from "../HeaderLink";
 
 export default function Header() {
   return (

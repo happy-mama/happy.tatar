@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Img, Name } from "./styled";
-import { Spacer } from "../../assets/WindowParts/styled";
+import { Spacer } from "../WindowParts/styled";
 
 interface input {
   name?: string;

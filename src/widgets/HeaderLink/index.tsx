@@ -10,13 +10,13 @@ export default function HeaderLink({ url, name, image }: input) {
   if (!image) {
     return (
       <Container to={url}>
-        <Text>{name}</Text>
+        <Text className="noSelect">{name}</Text>
       </Container>
     );
   } else {
     return (
       <Container to={url}>
-        <Image src={image}></Image>
+        <Image className="noSelect" src={image}></Image>
       </Container>
     );
   }

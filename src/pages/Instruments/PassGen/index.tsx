@@ -12,7 +12,7 @@ import {
   Select,
   SelOpts,
 } from "./styled";
-import { Spacer } from "../../../assets/WindowParts/styled";
+import { Spacer } from "../../../widgets/WindowParts/styled";
 
 export default function PassGen() {
   const [checks, setChecks] = useState({

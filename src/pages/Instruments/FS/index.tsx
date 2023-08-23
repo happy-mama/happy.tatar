@@ -14,9 +14,9 @@ import {
   PathName,
   PathUrl,
 } from "./styled";
-import { Spacer } from "../../../assets/WindowParts/styled";
+import { Spacer } from "../../../widgets/WindowParts/styled";
 import axios from "axios";
-import config from "../../..";
+import config from "../../../index";
 
 interface apiData {
   name: string;
@@ -34,7 +34,7 @@ export default function FS() {
 
   useEffect(() => {
     setCurDir(location.search.slice(5));
-  });
+  }, [location]);
 
   useEffect(() => {
     if (loading) {
@@ -57,9 +57,10 @@ export default function FS() {
         setLoading(false);
         setApiError(e.response.data.error);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [curDir]);
 
-  let Files = apiData.map((file, index) => {
+  const Files = apiData.map((file, index) => {
     return (
       <Dir
         to={
