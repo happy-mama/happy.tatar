@@ -17,6 +17,8 @@ export const Section = styled.section`
 
   animation: 2s ease-in-out 0s 1 Section;
 
+  overflow: hidden;
+
   @keyframes Section {
     0% {
       opacity: 0;

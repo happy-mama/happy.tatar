@@ -71,7 +71,12 @@ export const EmbedText = styled.div`
 export const InlineElements = styled.div`
   display: flex;
 
+  gap: 10px;
   width: fit-content;
+
+  @media (max-width: 700px) {
+    flex-flow: column;
+  }
 `;
 
 export const SilentLink = styled(Link)<{ $padding_left?: string }>`
@@ -100,6 +105,8 @@ export const Middle = styled.div`
 
 export const TextLink = styled(Link)`
   color: var(--color-TextLink-Text);
+
+  display: inline-block;
 
   background-color: var(--color-TextLink-Background);
   padding-left: 3px;

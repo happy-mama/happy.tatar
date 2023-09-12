@@ -27,6 +27,11 @@ export const LineBody = styled.div`
 
   animation: 2s ease-in-out 0s 1 Lines;
 
+  @media (max-width: 700px) {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
   @keyframes Lines {
     0% {
       transform: translateY(100%);

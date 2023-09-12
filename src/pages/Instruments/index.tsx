@@ -10,6 +10,7 @@ import { Container } from "./styled";
 export default function Instruments() {
   return (
     <Container>
+      <Spacer $height="100px" />
       <SilentLink to="/i/fs" $padding_left="5%">
         <MainText>FS</MainText>
         <Text>Public folder of server. View and download what you want.</Text>

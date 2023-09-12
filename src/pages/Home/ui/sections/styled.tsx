@@ -1,56 +1,90 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  display: grid;
-
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: "tl tl tl tr tr" "bl bl br br br";
-
-  height: 100%;
-  width: 100%;
-`;
-
-export const BlockTopLeft = styled.div`
-  position: relative;
-
-  grid-area: tl;
-`;
-
-export const BlockTopRight = styled.div`
-  position: relative;
-
-  grid-area: tr;
-`;
-
-export const BlockBottomRight = styled.div`
-  position: relative;
-
-  grid-area: br;
-`;
-
-export const BlockBottomLeft = styled.div`
-  position: relative;
-
-  grid-area: bl;
-`;
-
-interface BigTextProps {
+interface BlockProps {
   $top?: string;
   $bottom?: string;
   $left?: string;
   $right?: string;
+
+  $width?: string;
 }
 
-export const BigText = styled.h2<BigTextProps>`
-  position: absolute;
+interface Text {
+  $size?: string;
+}
 
-  top: ${(props) => (props.$top ? props.$top : "none")};
-  bottom: ${(props) => (props.$bottom ? props.$bottom : "none")};
-  left: ${(props) => (props.$left ? props.$left : "none")};
-  right: ${(props) => (props.$right ? props.$right : "none")};
+export const BigText = styled.h2`
+  display: inline-block;
+
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
 
   word-wrap: normal;
-
   font-size: 38px;
+`;
+
+export const BlockText = styled.h3<Text>`
+  display: inline-block;
+
+  width: 80vw;
+  height: 100%;
+
+  margin: 0;
+
+  word-wrap: normal;
+  font-size: ${(props) => (props.$size ? props.$size : "38px")};
+
+  @media (max-width: 700px) {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+  }
+`;
+
+export const Block = styled.div<BlockProps>`
+  position: relative;
+
+  top: ${(props) => (props.$top ? props.$top : "")};
+  bottom: ${(props) => (props.$bottom ? props.$bottom : "")};
+  left: ${(props) => (props.$left ? props.$left : "")};
+  right: ${(props) => (props.$right ? props.$right : "")};
+
+  width: ${(props) => (props.$width ? props.$width : "60%")};
+
+  @media (max-width: 700px) {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+  }
+`;
+
+interface MediaSpacer {
+  $width?: string;
+  $height?: string;
+}
+
+export const BlockMediaSpacer = styled.div<MediaSpacer>`
+  display: none;
+
+  @media (max-width: 700px) {
+    display: block;
+
+    width: ${(props) => (props.$width ? props.$width : "0")};
+    height: ${(props) => (props.$height ? props.$height : "0")};
+  }
+`;
+
+export const BlockImg = styled.img`
+  margin: 15px;
+
+  height: 70px;
+  width: 70px;
 `;
