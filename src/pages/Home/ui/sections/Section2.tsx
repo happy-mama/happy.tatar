@@ -6,7 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 export default function Section2() {
   return (
     <Block>
-      <BlockText>Work experience 🦾</BlockText>
+      <BlockText>Work experience</BlockText>
       <Spacer $height="20px" />
       <BlockText $size="20px">
         Currently working in{" "}
@@ -18,20 +18,22 @@ export default function Section2() {
         />{" "}
         as frontend dev.
         <Spacer $height="20px" />
-        <Carousel emulateTouch swipeable>
-          <div>
-            <img alt="aino0" src="/projects/aino0.webp" />
-          </div>
-          <div>
-            <img alt="aino0" src="/projects/aino1.webp" />
-          </div>
-          <div>
-            <img alt="aino0" src="/projects/aino2.webp" />
-          </div>
-          <div>
-            <img alt="aino0" src="/projects/aino3.webp" />
-          </div>
-        </Carousel>
+        <Middle>
+          <Carousel autoPlay infiniteLoop emulateTouch swipeable>
+            <div>
+              <img alt="aino0" src="/projects/aino0.webp" />
+            </div>
+            <div>
+              <img alt="aino0" src="/projects/aino1.webp" />
+            </div>
+            <div>
+              <img alt="aino0" src="/projects/aino2.webp" />
+            </div>
+            <div>
+              <img alt="aino0" src="/projects/aino3.webp" />
+            </div>
+          </Carousel>
+        </Middle>
       </BlockText>
     </Block>
   );
