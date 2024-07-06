@@ -21,9 +21,9 @@ export default function Instruments() {
         <Text>Generate a strong password.</Text>
       </SilentLink>
       <Spacer $height="50px" />
-      {/* <SilentLink to="/i/dbh" $padding_left="5%">
-        <MainText>DBH</MainText>
-        <Text>Guide for DBH lib.</Text>
+      {/* <SilentLink to="/i/linker" $padding_left="5%">
+        <MainText>Linker</MainText>
+        <Text>Manage redirect links.</Text>
       </SilentLink>
       <Spacer $height="50px" /> */}
       <SilentLink

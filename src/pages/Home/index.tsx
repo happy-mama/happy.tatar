@@ -14,9 +14,9 @@ export default function Home() {
         <Section>
           <Section1 />
         </Section>
-        <Section>
+        {/* <Section>
           <Section2 />
-        </Section>
+        </Section> */}
         <Section>
           <Section3 />
         </Section>

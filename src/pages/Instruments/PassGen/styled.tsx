@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 
 export const Container = styled.div`
-  margin-top: 100px;
-  margin-left: 5%;
+  padding-top: 100px;
+  padding-left: 5%;
   width: 90%;
 `;
 

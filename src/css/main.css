@@ -24,6 +24,7 @@ body {
   --color-body-light: #4e4e4e;
   --color-Pink: #e51eff;
   --color-Text: #e9e9e9;
+  --color-Placeholder: #acacac;
   --color-MainText: #e51eff;
   --color-Header-Text: #ffeeee;
   --color-EmbedLink-White: #eaeaea;
@@ -32,6 +33,10 @@ body {
   --color-TextLink-Background: #004167;
   --color-WindowPart-Background: #e51eff25;
   --color-WindowPart-Border: #e51eff35;
+  --color-FS-BG-InputText: #e51eff4a;
+  --color-success: #23ce31;
+  --color-error: #b91010;
+  --color-message: #e9e9e9;
 }
 
 html {
