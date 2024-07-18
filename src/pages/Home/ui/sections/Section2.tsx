@@ -1,6 +1,6 @@
 import { Carousel } from "react-responsive-carousel";
 import { Block, BlockText } from "./styled";
-import { Middle, Spacer, TextLink } from "src/widgets/WindowParts/styled";
+import { Middle, Spacer, TextLink } from "widgets/WindowParts/styled";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function Section2() {

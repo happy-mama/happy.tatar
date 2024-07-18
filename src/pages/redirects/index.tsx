@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import config from "src/index";
+import config from "index";
 import { Container } from "../Instruments/FS/styled";
 
 export default function RedirectURL() {

@@ -142,12 +142,14 @@ export default function FS() {
           return;
         }
 
+        if (!uploadKey) {
+          return setUploadStatus({ type: "error", msg: "Upload key missing" });
+        }
+
         setUploadStatus({ msg: "", type: "success" });
         setIsUploading(true);
         const formData = new FormData();
         formData.append("file", uploadFile);
-        // formData.append("key", uploadKey);
-        // formData.append("path", uploadPath || curDir);
 
         axios
           .post(`${config.api}/uf/`, formData, {
@@ -156,15 +158,28 @@ export default function FS() {
               Uf_path: uploadPath || curDir,
             },
             onUploadProgress: (e) => {
-              // console.log(e);
               setUploadProgress(e);
             },
           })
-          .then((data) => {
-            console.log(data);
-            setUploadStatus({ type: "success", msg: "Uploaded" });
+          .then((responce) => {
             setUploadProgress(null);
             setIsUploading(false);
+
+            if (responce.data) {
+              if (responce.data.error) {
+                if (responce.data.error === "EWRONGKEY") {
+                  setUploadStatus({ type: "error", msg: "Wrong upload key" });
+                } else if (responce.data.error === "ENOKEY") {
+                  setUploadStatus({ type: "error", msg: "Upload key missing" });
+                } else {
+                  setUploadStatus({ type: "error", msg: "Unknown server error" });
+                }
+              } else {
+                setUploadStatus({ type: "success", msg: "Uploaded" });
+              }
+            } else {
+              setUploadStatus({ type: "message", msg: "Unknown server responce" });
+            }
           })
           .catch((e) => {
             console.log(e);
@@ -180,8 +195,6 @@ export default function FS() {
       };
 
       const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>, mode: "key" | "path") => {
-        console.log(uploadKey, e.target.value);
-
         if (mode === "key") {
           setUploadKey(e.target.value);
         } else {
@@ -243,7 +256,7 @@ export default function FS() {
           <div>Upload key:</div>
           <UploadInputText
             type="text"
-            placeholder=""
+            placeholder="required for uploading"
             onChange={(e) => {
               handleChangeInput(e, "key");
             }}

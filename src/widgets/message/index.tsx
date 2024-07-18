@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { Container, Messages } from "./styled";
-import { useMessageStore } from "src/store";
+import { useMessageStore } from "store";
 
 export default function RenderMessage() {
-  const { messages, setMessages } = useMessageStore(
-    ({ messages, setMessages }) => ({ messages, setMessages })
-  );
+  const { messages, setMessages } = useMessageStore(({ messages, setMessages }) => ({
+    messages,
+    setMessages,
+  }));
 
   let ShowMessages = <></>;
 

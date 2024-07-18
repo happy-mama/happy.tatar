@@ -1,6 +1,6 @@
 import { Block, BlockText } from "./styled";
-import { InlineElements } from "src/widgets/WindowParts/styled";
-import EmbedLink from "src/widgets/EmbedLink";
+import { InlineElements } from "widgets/WindowParts/styled";
+import EmbedLink from "widgets/EmbedLink";
 
 export default function Section4() {
   return (
@@ -20,12 +20,7 @@ export default function Section4() {
             url="https://t.me/kontent_net"
             target="_blank"
           />
-          <EmbedLink
-            name="VK"
-            img="/svg/vk.svg"
-            url="https://vk.com/kontent_net"
-            target="_blank"
-          />
+          <EmbedLink name="VK" img="/svg/vk.svg" url="https://vk.com/kontent_net" target="_blank" />
         </InlineElements>
       </Block>
     </>
